@@ -26,7 +26,7 @@ pool.query('SELECT * FROM player', (err, res) => {
 
 // Option 2: Passing a connection URI
 const sequelize = new Sequelize(process.env.DATABASE_URL);
-let User = sequelize.define('player', {
+let User = sequelize.define('players', {
     //nom: Sequelize.STRING,
     //prenom: Sequelize.STRING,
     email: Sequelize.STRING,
@@ -35,7 +35,9 @@ let User = sequelize.define('player', {
     //lose:Sequelize.INTEGER
 });
 User.sync();
-
+sequelize.authenticate()
+    .then(()=> console.log('database connected'))
+    .catch(err =>console.log('error'+err))
 const  hashPassword = async (mdp)=>{
     let passHash;
     try {
