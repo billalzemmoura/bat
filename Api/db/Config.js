@@ -1,4 +1,4 @@
-//const Sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 //const bCrypt = require("bcrypt");
 //const db ={database:'db_bn',user:'root',password:''};
 /*const sequelize = new Sequelize(db.database, db.user, null, {
