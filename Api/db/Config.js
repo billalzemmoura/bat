@@ -1,5 +1,5 @@
 //const Sequelize = require('sequelize');
-const bCrypt = require("bcrypt");
+//const bCrypt = require("bcrypt");
 //const db ={database:'db_bn',user:'root',password:''};
 /*const sequelize = new Sequelize(db.database, db.user, null, {
     host: 'localhost',
@@ -33,9 +33,9 @@ pool.query('SELECT * FROM player', (err, res) => {
     mdp: Sequelize.STRING,
     //win:Sequelize.INTEGER,
     //lose:Sequelize.INTEGER
-});
+});sequelize
 User.sync();
-*/
+
 const  hashPassword = async (mdp)=>{
     let passHash;
     try {
@@ -64,3 +64,4 @@ const checkUser = async (email, password) =>{
     return  bCrypt.compareSync(password, user.password) === true ? user : false;
 };
 module.exports = {User,hashPassword,checkUser,addUser};
+*/
