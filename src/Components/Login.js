@@ -150,14 +150,14 @@ class  Login extends Component{
 
         });
         if (!isError){
-            await Axios.get('http://localhost:8000/api/login?email='+email+'&password='+password,
+            await Axios.get('https://bataillenav.herokuapp.com/api/login?email='+email+'&password='+password,
                 {headers: {'Access-Control-Allow-Origin': '*'}}
                 )
                 .then(res=>{
                     if (res.status === 200)
                     {
                         const data = res.data;
-                        context.updateSession({ nom:data.nom,prenom:data.prenom,email:data.email });
+                        context.updateSession({mdp:data.mdp,email:data.email });
                         return myHistory.push("/");
                     }
                 })

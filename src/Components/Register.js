@@ -103,9 +103,8 @@ class Register extends Component {
             );
         });
         if (!isError) {
-            await Axios.post('http://localhost:8000/api/register', {
-                nom,
-                prenom,
+            await Axios.post('https://bataillenav.herokuapp.com/api/register', {
+
                 email,
                 password
             }).then(res => {
