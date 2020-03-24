@@ -10,9 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19e44116-c9f1-4016-84fe-a1678ed930da" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/bn-front.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bn-front.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/db/Config.js" beforeDir="false" afterPath="$PROJECT_DIR$/Api/db/Config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,8 +59,11 @@
     <property name="last.edited.regexp" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/react-scripts" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -139,7 +143,7 @@
       <workItem from="1584706528757" duration="42000" />
       <workItem from="1584707984761" duration="27696000" />
       <workItem from="1584902299394" duration="33083000" />
-      <workItem from="1585064955915" duration="399000" />
+      <workItem from="1585064955915" duration="1838000" />
     </task>
     <servers />
   </component>
@@ -167,34 +171,34 @@
       <screen x="0" y="28" width="1366" height="706" />
     </state>
     <state x="249" y="43" width="924" height="691" key="DBNavigator.ProjectSettingsDialog/0.28.1366.706@0.28.1366.706" timestamp="1584665700364" />
-    <state width="1292" height="175" key="GridCell.Tab.0.bottom" timestamp="1585065338457">
+    <state width="1292" height="175" key="GridCell.Tab.0.bottom" timestamp="1585065431630">
       <screen x="51" y="27" width="1315" height="741" />
     </state>
     <state width="1345" height="142" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1280.984@0.0.1366.728" timestamp="1584591419386" />
     <state width="1345" height="31" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584653044777" />
     <state width="1318" height="92" key="GridCell.Tab.0.bottom/0.28.1366.706@0.28.1366.706" timestamp="1584943649060" />
-    <state width="1292" height="175" key="GridCell.Tab.0.bottom/51.27.1315.741@51.27.1315.741" timestamp="1585065338457" />
-    <state width="1292" height="175" key="GridCell.Tab.0.center" timestamp="1585065338456">
+    <state width="1292" height="175" key="GridCell.Tab.0.bottom/51.27.1315.741@51.27.1315.741" timestamp="1585065431630" />
+    <state width="1292" height="175" key="GridCell.Tab.0.center" timestamp="1585065431629">
       <screen x="51" y="27" width="1315" height="741" />
     </state>
     <state width="1345" height="142" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1280.984@0.0.1366.728" timestamp="1584591419386" />
     <state width="1345" height="31" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584653044776" />
     <state width="1318" height="92" key="GridCell.Tab.0.center/0.28.1366.706@0.28.1366.706" timestamp="1584943649059" />
-    <state width="1292" height="175" key="GridCell.Tab.0.center/51.27.1315.741@51.27.1315.741" timestamp="1585065338456" />
-    <state width="1292" height="175" key="GridCell.Tab.0.left" timestamp="1585065338456">
+    <state width="1292" height="175" key="GridCell.Tab.0.center/51.27.1315.741@51.27.1315.741" timestamp="1585065431629" />
+    <state width="1292" height="175" key="GridCell.Tab.0.left" timestamp="1585065431629">
       <screen x="51" y="27" width="1315" height="741" />
     </state>
     <state width="1345" height="142" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1280.984@0.0.1366.728" timestamp="1584591419386" />
     <state width="1345" height="31" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584653044776" />
     <state width="1318" height="92" key="GridCell.Tab.0.left/0.28.1366.706@0.28.1366.706" timestamp="1584943649059" />
-    <state width="1292" height="175" key="GridCell.Tab.0.left/51.27.1315.741@51.27.1315.741" timestamp="1585065338456" />
-    <state width="1292" height="175" key="GridCell.Tab.0.right" timestamp="1585065338456">
+    <state width="1292" height="175" key="GridCell.Tab.0.left/51.27.1315.741@51.27.1315.741" timestamp="1585065431629" />
+    <state width="1292" height="175" key="GridCell.Tab.0.right" timestamp="1585065431629">
       <screen x="51" y="27" width="1315" height="741" />
     </state>
     <state width="1345" height="142" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1280.984@0.0.1366.728" timestamp="1584591419386" />
     <state width="1345" height="31" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584653044777" />
     <state width="1318" height="92" key="GridCell.Tab.0.right/0.28.1366.706@0.28.1366.706" timestamp="1584943649059" />
-    <state width="1292" height="175" key="GridCell.Tab.0.right/51.27.1315.741@51.27.1315.741" timestamp="1585065338456" />
+    <state width="1292" height="175" key="GridCell.Tab.0.right/51.27.1315.741@51.27.1315.741" timestamp="1585065431629" />
     <state width="1318" height="174" key="GridCell.Tab.1.bottom" timestamp="1584694163919">
       <screen x="0" y="28" width="1366" height="706" />
     </state>

@@ -1,10 +1,10 @@
 const Sequelize = require('sequelize');
-//const bCrypt = require("bcrypt");
+const bCrypt = require("bcrypt");
 //const db ={database:'db_bn',user:'root',password:''};
 /*const sequelize = new Sequelize(db.database, db.user, null, {
     host: 'localhost',
     dialect: 'mysql'
-});*/
+});
 
 
 let pg = require('pg');
@@ -22,24 +22,24 @@ pool.query('SELECT * FROM player', (err, res) => {
   console.log(err, res)
   pool.end()
 })
-
+*/
 
 // Option 2: Passing a connection URI
-//const sequelize = new Sequelize(connString);
-/*let User = sequelize.define('player', {
+const sequelize = new Sequelize(process.env.DATABASE_URL);
+let User = sequelize.define('player', {
     //nom: Sequelize.STRING,
     //prenom: Sequelize.STRING,
     email: Sequelize.STRING,
     mdp: Sequelize.STRING,
     //win:Sequelize.INTEGER,
     //lose:Sequelize.INTEGER
-});sequelize
+});
 User.sync();
 
 const  hashPassword = async (mdp)=>{
     let passHash;
     try {
-        passHash = await bCrypt.hashSync(password, 10)
+        passHash = await bCrypt.hashSync(mdp, 10)
     }
     catch (e) {
         return null;
@@ -50,10 +50,10 @@ const addUser = async (user)=>{
     let newUser = await User.findOne({ where: {email:user.email} }).catch(()=> {return null});
     if (newUser)
         return false;
-    const genPass = await hashPassword(user.password);
+    const genPass = await hashPassword(user.mdp);
     if (genPass === null)
         return null;
-    user.password=genPass;
+    user.mdp=genPass;
     return User.create(user).catch(()=>{return null});
 };
 const checkUser = async (email, password) =>{
@@ -64,4 +64,3 @@ const checkUser = async (email, password) =>{
     return  bCrypt.compareSync(password, user.password) === true ? user : false;
 };
 module.exports = {User,hashPassword,checkUser,addUser};
-*/
