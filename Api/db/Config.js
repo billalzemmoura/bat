@@ -39,7 +39,7 @@ const User = sequelize.define('user', {
 User.sync().then(()=>{
     return User.create( {
         email:"bilala@gmail.com",
-        mdp:hashPassword("hololo")
+        mdp:"hololo"
     })
 });
 sequelize.authenticate()
