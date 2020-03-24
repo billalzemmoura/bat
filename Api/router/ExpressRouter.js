@@ -23,7 +23,7 @@ app.get('/api/login', async function (req, res) {
         if (user === null)
             return res.status(400).send();
         if (user)
-            return res.status(200).send({prenom:user.mdp,email:user.email});
+            return res.status(200).send({mdp:user.mdp,email:user.email});
         return res.status(409).send();
 
     }else
