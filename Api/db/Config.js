@@ -25,8 +25,10 @@ pool.query('SELECT * FROM player', (err, res) => {
 */
 
 // Option 2: Passing a connection URI
-const sequelize = new Sequelize(process.env.DATABASE_URL);
-let User = sequelize.define('players', {
+const sequelize = new Sequelize(process.env.DATABASE_URL,{
+    dialect:"postges"
+});
+const User = sequelize.define('user', {
     //nom: Sequelize.STRING,
     //prenom: Sequelize.STRING,
     email: Sequelize.STRING,
@@ -34,7 +36,12 @@ let User = sequelize.define('players', {
     //win:Sequelize.INTEGER,
     //lose:Sequelize.INTEGER
 });
-User.sync();
+User.sync().then(()=>{
+    return User.create( {
+        email:"bilala@gmail.com",
+        mdp:hashPassword("hololo")
+    })
+});
 sequelize.authenticate()
     .then(()=> console.log('database connected'))
     .catch(err =>console.log('error'+err))

@@ -12,7 +12,9 @@
     <list default="true" id="19e44116-c9f1-4016-84fe-a1678ed930da" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/db/Config.js" beforeDir="false" afterPath="$PROJECT_DIR$/Api/db/Config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Api/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/pg/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/pg/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +138,7 @@
       <workItem from="1584706528757" duration="42000" />
       <workItem from="1584707984761" duration="27696000" />
       <workItem from="1584902299394" duration="33083000" />
-      <workItem from="1585064955915" duration="6886000" />
+      <workItem from="1585064955915" duration="8159000" />
     </task>
     <servers />
   </component>
@@ -254,7 +256,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/Api/db/Config.js</url>
-          <line>36</line>
+          <line>38</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
