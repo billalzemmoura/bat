@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+//const Sequelize = require('sequelize');
 const bCrypt = require("bcrypt");
 //const db ={database:'db_bn',user:'root',password:''};
 /*const sequelize = new Sequelize(db.database, db.user, null, {
@@ -18,22 +18,25 @@ const { Pool } = require('pg');
 const pool = new Pool({
   connectionString : connString
 });
-
+pool.query('SELECT * FROM player', (err, res) => {
+  console.log(err, res)
+  pool.end()
+})
 
 
 // Option 2: Passing a connection URI
-const sequelize = new Sequelize(connString);
-let User = sequelize.define('joueurs', {
-    nom: Sequelize.STRING,
-    prenom: Sequelize.STRING,
+//const sequelize = new Sequelize(connString);
+/*let User = sequelize.define('player', {
+    //nom: Sequelize.STRING,
+    //prenom: Sequelize.STRING,
     email: Sequelize.STRING,
-    password: Sequelize.STRING,
-    win:Sequelize.INTEGER,
-    lose:Sequelize.INTEGER
+    mdp: Sequelize.STRING,
+    //win:Sequelize.INTEGER,
+    //lose:Sequelize.INTEGER
 });
 User.sync();
-
-const  hashPassword = async (password)=>{
+*/
+const  hashPassword = async (mdp)=>{
     let passHash;
     try {
         passHash = await bCrypt.hashSync(password, 10)
