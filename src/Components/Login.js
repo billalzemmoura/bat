@@ -150,8 +150,7 @@ class  Login extends Component{
 
         });
         if (!isError){
-            await https.get('https://bataillenav.herokuapp.com/api/login?email='+email+'&mdp='+mdp,
-                {headers: {'Access-Control-Allow-Origin': '*'}}
+            await https.get('https://bataillenav.herokuapp.com/api/login?email='+email+'&mdp='+mdp
                 )
                 .then(res=>{
                     if (res.status === 200)
