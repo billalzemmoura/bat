@@ -78,9 +78,9 @@ class  Login extends Component{
                                            aria-describedby="emailHelp"  placeholder={"Votre email"}/>
                                         <label className="sr-only" htmlFor="password" >Password</label>
                                     <FontAwesomeIcon icon={['fas', 'lock']} className="input-icon"/>
-                                        <input required name="password" type="password"
+                                        <input required name="mdp" type="password"
                                                value={mdp} onChange={this.handleChangeInput}
-                                               className="padded-form-input form-control" id="password"
+                                               className="padded-form-input form-control" id="mdp"
                                                placeholder={"mot de passe"}/>
                                         </div>
 
