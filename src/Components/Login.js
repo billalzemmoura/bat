@@ -151,7 +151,7 @@ class  Login extends Component{
 
         });
         if (!isError){
-            await Axios.get('https://bataillenav.herokuapp.com/api/login?email='+email+'&mdp='+mdp
+            await Axios.get('https://bataillenav.herokuapp.com/login?email='+email+'&mdp='+mdp
                 )
                 .then(res=>{
                     if (res.status === 200)
