@@ -3,7 +3,8 @@ import Logo from "./logo.jpg";
 import {withSessionContext} from "../Utils/SessionProvider";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {Link,withRouter} from "react-router-dom";
-const https = require('https');
+import Axios from "axios";
+
 class  Login extends Component{
     constructor(props) {
         super(props);
@@ -150,7 +151,7 @@ class  Login extends Component{
 
         });
         if (!isError){
-            await https.get('https://bataillenav.herokuapp.com/api/login?email='+email+'&mdp='+mdp
+            await Axios.get('https://bataillenav.herokuapp.com/api/login?email='+email+'&mdp='+mdp
                 )
                 .then(res=>{
                     if (res.status === 200)
