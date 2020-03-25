@@ -103,7 +103,7 @@ class Register extends Component {
             );
         });
         if (!isError) {
-            await Axios.post('https://bataillenav.herokuapp.com/Api/register.js ', {
+            await Axios.post('\'https://bataillenav.herokuapp.com/login.js ', {
 
                 email,
                 password
