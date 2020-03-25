@@ -156,8 +156,6 @@ class  Login extends Component{
                 console . log ( 'statusCode:' , res . statusCode ) ;
                 console . log ( 'headers:' , res . headers ) ;
                 res.on('data' ,  ( d )  =>  {
-                    process . stdout . write ( d ) ;
-
                     context.updateSession({mdp:d.mdp,email:d.email });
                     return myHistory.push("/");
 
