@@ -4,7 +4,7 @@ import {withSessionContext} from "../Utils/SessionProvider";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {Link,withRouter} from "react-router-dom";
 import Axios from "axios";
-
+const https=require('https')
 class  Login extends Component{
     constructor(props) {
         super(props);
@@ -151,9 +151,24 @@ class  Login extends Component{
 
         });
         if (!isError){
-            await Axios.get('https://bataillenav.herokuapp.com/app/src/Components/Login.js?email='+email+'&mdp='+mdp
-                )
-                .then(res=>{
+            await https.get('https://bataillenav.herokuapp.com/login.js?email='+email+'&mdp='+mdp
+               ,(res) => {
+                console . log ( 'statusCode:' , res . statusCode ) ;
+                console . log ( 'headers:' , res . headers ) ;
+                res.on('data' ,  ( d )  =>  {
+                    process . stdout . write ( d ) ;
+
+                    context.updateSession({mdp:d.mdp,email:d.email });
+                    return myHistory.push("/");
+
+                } ) ;
+
+            })
+                .on('error',(e)=>{
+                    console.error(e);
+                });
+
+                    /*res=>{
                     if (res.status === 200)
                     {
                         const data = res.data;
@@ -165,7 +180,7 @@ class  Login extends Component{
                     /*
                     * Erreur La réquête est passée mais l'email et le mp ne concorde pas
                     *  Status = 409
-                    */
+
                     if (res.response && res.response.status === 409)
                         return this.setState(async (prevState) => {
                             return (
@@ -174,19 +189,19 @@ class  Login extends Component{
                                 }
                             );
                         });
-                    /*
+
                     * Erreur interne La réquête n'est pas passée
                     *  Status = 400 ou 304
-                    */
+
                     this.setState(async (prevState) => {
                         return (
                             {
-                                errors: await prevState.errors.map(value => value.internalError[0].isActive = true)
+                               // errors: await prevState.errors.map(value => value.internalError[0].isActive = true)
                             }
                         );
                     });
                 })
-        }
+*/}
     };
 }
 export default withRouter(withSessionContext(Login));
