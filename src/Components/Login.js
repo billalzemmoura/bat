@@ -3,13 +3,13 @@ import Logo from "./logo.jpg";
 import {withSessionContext} from "../Utils/SessionProvider";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {Link,withRouter} from "react-router-dom";
-import Axios from "axios";
+const https = require('https');
 class  Login extends Component{
     constructor(props) {
         super(props);
         this.state = {
             email: "",
-            password: "",
+            mdp: "",
             regSucc:this.props.location.state ? this.props.location.state.regSucc:false,
             logoutSucc:this.props.location.state? this.props.location.state.logoutSucc:false,
             errors: [{
@@ -17,7 +17,7 @@ class  Login extends Component{
                     {isActive: false, type: 'emailNotBlank', message: 'L\'email ne doit pas être vide.'},
                     {isActive: false, type: 'emailValid', message: 'L\'email n\'est pas valide.'}
                 ],
-                'password': [
+                'mdp': [
                     {isActive: false, type: 'passNotBlank', message: 'Le mot de passe ne doit pas être vide.'},
                     {isActive: false, type: 'passMin', message: 'Le champ mot de passe ne peut être inférieur à 8.'}
                 ],
@@ -36,7 +36,7 @@ class  Login extends Component{
     }
 
     render() {
-         const {errors,email,password,regSucc,logoutSucc} = this.state;
+         const {errors,email,mdp,regSucc,logoutSucc} = this.state;
         return(
             <div className="container">
                 <div className="row">
@@ -55,7 +55,7 @@ class  Login extends Component{
                                 return <div key={index} className="alert alert-danger">{item.message}</div>;
                             return ''
                         })}
-                        {errors[0].password.map((item,index) => {
+                        {errors[0].mdp.map((item,index) => {
                             if (item.isActive)
                                 return <div key={index} className="alert alert-danger">{item.message}</div>;
                             return ''
@@ -78,7 +78,7 @@ class  Login extends Component{
                                         <label className="sr-only" htmlFor="password" >Password</label>
                                     <FontAwesomeIcon icon={['fas', 'lock']} className="input-icon"/>
                                         <input required name="password" type="password"
-                                               value={password} onChange={this.handleChangeInput}
+                                               value={mdp} onChange={this.handleChangeInput}
                                                className="padded-form-input form-control" id="password"
                                                placeholder={"mot de passe"}/>
                                         </div>
@@ -126,7 +126,7 @@ class  Login extends Component{
             // eslint-disable-next-line no-useless-escape
             RegExp(/^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i);
 
-        const {email, password} = this.state;
+        const {email, mdp} = this.state;
         let isError = false;
         await this.setState(prevState => {
             return ({
@@ -139,9 +139,9 @@ class  Login extends Component{
                         });
                         item.badCredential[0].isActive=false;
                         item.internalError[0].isActive=false;
-                        item.password[0].isActive = password.trim() === "";
-                        item.password[1].isActive = password.length < 8;
-                        item.password.forEach(value => {
+                        item.mdp[0].isActive = mdp.trim() === "";
+                        item.mdp[1].isActive = mdp.length < 8;
+                        item.mdp.forEach(value => {
                             if (value.isActive) isError = true
                         });
                         return item;
@@ -150,7 +150,7 @@ class  Login extends Component{
 
         });
         if (!isError){
-            await Axios.get('https://bataillenav.herokuapp.com/api/login?email='+email+'&password='+password,
+            await https.get('https://bataillenav.herokuapp.com/api/login?email='+email+'&mdp='+mdp,
                 {headers: {'Access-Control-Allow-Origin': '*'}}
                 )
                 .then(res=>{
