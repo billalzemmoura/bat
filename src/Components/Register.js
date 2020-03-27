@@ -1,7 +1,14 @@
 import React, {Component} from "react";
 import Axios from "axios";
+import express  from "express"
 import {withRouter} from "react-router-dom";
 import {withSessionContext} from "../Utils/SessionProvider";
+
+
+var bodyParser = require("body-parser");
+
+// serveur html
+var server = express();
 
 class Register extends Component {
     constructor(props) {
@@ -103,10 +110,16 @@ class Register extends Component {
             );
         });
         if (!isError) {
-            await Axios.post('\'https://bataillenav.herokuapp.com/register.js ', {
 
-                email,
-                password
+            server.use(bodyParser.urlencoded({ extended: true }));
+            server.listen();
+
+
+
+            server.post('https://bataillenav.herokuapp.com/api/register', function(request, res) {
+                var email = request.body.email;
+                var password = request.body.password;
+                console.log("p1=" + email);
             }).then(res => {
                 //reponse ok crée utilisateur et rédirige vers login
                 if (res.status === 201) {
