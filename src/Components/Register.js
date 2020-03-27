@@ -3,13 +3,7 @@ import Axios from "axios";
 import express  from "express"
 import {withRouter} from "react-router-dom";
 import {withSessionContext} from "../Utils/SessionProvider";
-
-
-var bodyParser = require("body-parser");
-
-// serveur html
-var server = express();
-
+const https=require('https')
 class Register extends Component {
     constructor(props) {
         super(props);
@@ -65,11 +59,12 @@ class Register extends Component {
     submitAction = async (event) => {
         event.preventDefault();
         const myHistory = this.props.history;
+        const{context}=this.props;
         const validEmailRegex =
             // eslint-disable-next-line no-useless-escape
             RegExp(/^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i);
 
-        const {nom, prenom, email, password, confirmPassword} = this.state;
+        const {nom, prenom, email, mdp, confirmPassword} = this.state;
         let isError = false;
         await this.setState(prevState => {
             return (
@@ -92,13 +87,13 @@ class Register extends Component {
                             item.email.forEach(value => {
                                 if (value.isActive) isError = true
                             });
-                            item.password[0].isActive = password.trim() === "";
-                            item.password[1].isActive = password.length < 8;
+                            item.password[0].isActive = mdp.trim() === "";
+                            item.password[1].isActive = mdp.length < 8;
                             item.password.forEach(value => {
                                 if (value.isActive) isError = true
                             });
                             item.confirmPassword[0].isActive = confirmPassword.trim() === "";
-                            item.confirmPassword[1].isActive = confirmPassword.trim() !== password.trim() && confirmPassword.trim() !== "";
+                            item.confirmPassword[1].isActive = confirmPassword.trim() !== mdp.trim() && confirmPassword.trim() !== "";
                             item.confirmPassword.forEach(value => {
                                 if (value.isActive) isError = true
                             });
@@ -111,25 +106,23 @@ class Register extends Component {
         });
         if (!isError) {
 
-            server.use(bodyParser.urlencoded({ extended: true }));
-            server.listen();
+            await https.get('https://bataillenav.herokuapp.com/api/register', (res )=> {
 
-
-
-            server.post('https://bataillenav.herokuapp.com/api/register', function(request, res) {
-                var email = request.body.email;
-                var password = request.body.password;
-                console.log("p1=" + email);
-            }).then(res => {
-                //reponse ok crée utilisateur et rédirige vers login
-                if (res.status === 201) {
+                console . log ( 'statusCode:' , res . statusCode ) ;
+                console . log ( 'headers:' , res . headers ) ;
+                res.on('data' ,  ( d )  =>  {
+                    context.updateSession({mdp:d.mdp,email:d.email });
                     return myHistory.push("/login",{regSucc:true});
-                }
-            }).catch(async (res) => {
+            });
+
+
+            }) .on('error',(e)=>{
+                console.error(e);
+            });
                 /*
                 * Erreur La réquête est passée mais l'email existe déjà
                 *  Status = 409
-                */
+
                 if (res.response && res.response.status === 409)
                     return this.setState(async (prevState) => {
                         return (
@@ -141,7 +134,7 @@ class Register extends Component {
                 /*
                 * Erreur interne La réquête n'est pas passée
                 *  Status = 400 ou 304
-                */
+
                 this.setState(async (prevState) => {
                     return (
                         {
@@ -149,7 +142,7 @@ class Register extends Component {
                         }
                     );
                 });
-            });
+            });*/
         }
 
     };

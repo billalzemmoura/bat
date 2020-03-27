@@ -46,7 +46,7 @@ class  Login extends Component{
                         <div className="card-header text-center bg-transparent">
                             <img src={Logo} className="img" alt="logo" width="256" height="128"/>
                         </div>
-                        {errors[0].badCredential[0].isActive && <div className="alert alert-danger">
+                        {errors[0].badCredenposttial[0].isActive && <div className="alert alert-danger">
                             {errors[0].badCredential[0].message}
                         </div>}
                         {errors[0].internalError[0].isActive && <div className="alert alert-danger">
