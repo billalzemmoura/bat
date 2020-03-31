@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-
+import Axios from "axios";
+import express  from "express"
 import {withRouter} from "react-router-dom";
 import {withSessionContext} from "../Utils/SessionProvider";
 const https=require('https')
@@ -58,12 +59,12 @@ class Register extends Component {
     submitAction = async (event) => {
         event.preventDefault();
         const myHistory = this.props.history;
-        const{context}=this.props;
+        const{context}=this.props
         const validEmailRegex =
             // eslint-disable-next-line no-useless-escape
             RegExp(/^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i);
 
-        const {nom, prenom, email, mdp, confirmPassword} = this.state;
+        const {nom, prenom, email, password, confirmPassword} = this.state;
         let isError = false;
         await this.setState(prevState => {
             return (
@@ -86,13 +87,13 @@ class Register extends Component {
                             item.email.forEach(value => {
                                 if (value.isActive) isError = true
                             });
-                            item.password[0].isActive = mdp.trim() === "";
-                            item.password[1].isActive = mdp.length < 8;
+                            item.password[0].isActive = password.trim() === "";
+                            item.password[1].isActive = password.length < 8;
                             item.password.forEach(value => {
                                 if (value.isActive) isError = true
                             });
                             item.confirmPassword[0].isActive = confirmPassword.trim() === "";
-                            item.confirmPassword[1].isActive = confirmPassword.trim() !== mdp.trim() && confirmPassword.trim() !== "";
+                            item.confirmPassword[1].isActive = confirmPassword.trim() !== password.trim() && confirmPassword.trim() !== "";
                             item.confirmPassword.forEach(value => {
                                 if (value.isActive) isError = true
                             });

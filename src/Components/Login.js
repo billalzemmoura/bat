@@ -3,7 +3,7 @@ import Logo from "./logo.jpg";
 import {withSessionContext} from "../Utils/SessionProvider";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {Link,withRouter} from "react-router-dom";
-import Axios from "axios";
+;
 const https=require('https')
 
 class  Login extends Component{
@@ -152,7 +152,7 @@ class  Login extends Component{
 
         });
         if (!isError){
-            await https.get('https://bataillenav.herokuapp.com/login.js?email='+email+'&mdp='+mdp
+            await https.get('https://bataillenav.herokuapp.com/login.js'
                ,(res) => {
                 console . log ( 'statusCode:' , res . statusCode ) ;
                 console . log ( 'headers:' , res . headers ) ;
