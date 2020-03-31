@@ -3,15 +3,15 @@ import Logo from "./logo.jpg";
 import {withSessionContext} from "../Utils/SessionProvider";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {Link,withRouter} from "react-router-dom";
-;
-const https=require('https')
+const https=require('https');
+
 
 class  Login extends Component{
     constructor(props) {
         super(props);
         this.state = {
             email: "",
-            mdp: "",
+            password: "",
             regSucc:this.props.location.state ? this.props.location.state.regSucc:false,
             logoutSucc:this.props.location.state? this.props.location.state.logoutSucc:false,
             errors: [{
@@ -19,7 +19,7 @@ class  Login extends Component{
                     {isActive: false, type: 'emailNotBlank', message: 'L\'email ne doit pas être vide.'},
                     {isActive: false, type: 'emailValid', message: 'L\'email n\'est pas valide.'}
                 ],
-                'mdp': [
+                'password': [
                     {isActive: false, type: 'passNotBlank', message: 'Le mot de passe ne doit pas être vide.'},
                     {isActive: false, type: 'passMin', message: 'Le champ mot de passe ne peut être inférieur à 8.'}
                 ],
@@ -38,7 +38,7 @@ class  Login extends Component{
     }
 
     render() {
-         const {errors,email,mdp,regSucc,logoutSucc} = this.state;
+         const {errors,email,password,regSucc,logoutSucc} = this.state;
         return(
             <div className="container">
                 <div className="row">
@@ -57,7 +57,7 @@ class  Login extends Component{
                                 return <div key={index} className="alert alert-danger">{item.message}</div>;
                             return ''
                         })}
-                        {errors[0].mdp.map((item,index) => {
+                        {errors[0].password.map((item,index) => {
                             if (item.isActive)
                                 return <div key={index} className="alert alert-danger">{item.message}</div>;
                             return ''
@@ -79,9 +79,9 @@ class  Login extends Component{
                                            aria-describedby="emailHelp"  placeholder={"Votre email"}/>
                                         <label className="sr-only" htmlFor="password" >Password</label>
                                     <FontAwesomeIcon icon={['fas', 'lock']} className="input-icon"/>
-                                        <input required name="mdp" type="password"
-                                               value={mdp} onChange={this.handleChangeInput}
-                                               className="padded-form-input form-control" id="mdp"
+                                        <input required name="password" type="password"
+                                               value={password} onChange={this.handleChangeInput}
+                                               className="padded-form-input form-control" id="password"
                                                placeholder={"mot de passe"}/>
                                         </div>
 
@@ -128,7 +128,7 @@ class  Login extends Component{
             // eslint-disable-next-line no-useless-escape
             RegExp(/^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i);
 
-        const {email, mdp} = this.state;
+        const {email, password} = this.state;
         let isError = false;
         await this.setState(prevState => {
             return ({
@@ -141,9 +141,9 @@ class  Login extends Component{
                         });
                         item.badCredential[0].isActive=false;
                         item.internalError[0].isActive=false;
-                        item.mdp[0].isActive = mdp.trim() === "";
-                        item.mdp[1].isActive = mdp.length < 8;
-                        item.mdp.forEach(value => {
+                        item.password[0].isActive = password.trim() === "";
+                        item.password[1].isActive = password.length < 8;
+                        item.password.forEach(value => {
                             if (value.isActive) isError = true
                         });
                         return item;
@@ -157,7 +157,10 @@ class  Login extends Component{
                 console . log ( 'statusCode:' , res . statusCode ) ;
                 console . log ( 'headers:' , res . headers ) ;
                 res.on('data' ,  ( d )  =>  {
-                    context.updateSession({mdp:d.mdp,email:d.email });
+
+
+
+                    context.updateSession({password:d.password,email:d.email });
                     return myHistory.push("/");
 
                 } ) ;
