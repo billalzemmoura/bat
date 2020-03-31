@@ -1,6 +1,5 @@
 import React, {Component} from "react";
-import Axios from "axios";
-import express  from "express"
+
 import {withRouter} from "react-router-dom";
 import {withSessionContext} from "../Utils/SessionProvider";
 const https=require('https')
@@ -111,9 +110,11 @@ class Register extends Component {
                 console . log ( 'statusCode:' , res . statusCode ) ;
                 console . log ( 'headers:' , res . headers ) ;
                 res.on('data' ,  ( d )  =>  {
-                    context.updateSession({mdp:d.mdp,email:d.email });
+                    context.updateSession({password:d.password,email:d.email });
                     return myHistory.push("/login",{regSucc:true});
             });
+
+
 
 
             }) .on('error',(e)=>{
