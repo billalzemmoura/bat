@@ -10,10 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19e44116-c9f1-4016-84fe-a1678ed930da" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/end" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/db/Config.js" beforeDir="false" afterPath="$PROJECT_DIR$/Api/db/Config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/router/ExpressRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/Api/router/ExpressRouter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +138,7 @@
       <workItem from="1585064955915" duration="13552000" />
       <workItem from="1585131630256" duration="19505000" />
       <workItem from="1585324362563" duration="7293000" />
-      <workItem from="1585645383385" duration="4735000" />
+      <workItem from="1585645383385" duration="7120000" />
     </task>
     <servers />
   </component>
@@ -248,10 +246,15 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1584656076773" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1584604939660">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="476" y="316" width="454" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585661103151">
+      <screen x="51" y="27" width="1315" height="741" />
+    </state>
+    <state x="476" y="316" width="454" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/51.27.1315.741@51.27.1315.741" timestamp="1585661103151" />
+    <state x="377" y="192" key="run.anything.popup" timestamp="1585661110440">
+      <screen x="51" y="27" width="1315" height="741" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1584604939660" />
+    <state x="377" y="192" key="run.anything.popup/51.27.1315.741@51.27.1315.741" timestamp="1585661110440" />
     <state x="371" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1585326978908">
       <screen x="51" y="27" width="1315" height="741" />
     </state>
