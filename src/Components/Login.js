@@ -157,30 +157,19 @@ class  Login extends Component{
                 console . log ( 'statusCode:' , res . statusCode ) ;
                 console . log ( 'headers:' , res . headers ) ;
 
-
-               if(res.statusCode==200) {
-                   res.on('data', (d) => {
+                res.on('data' ,  ( d )  =>  {
 
 
-                       context.updateSession({password: d.password, email: d.email});
-                       return myHistory.push("/");
 
-                   });
-               }
-            }).catch(res=>{
-                if (res.response && res.response.status === 409)
-                    return this.setState(async (prevState) => {
-                        return (
-                            {
-                                errors: await prevState.errors.map(value => value.badCredential[0].isActive = true)
-                            }
-                        );
-                    });
+                    context.updateSession({password:d.password,email:d.email });
+                    return myHistory.push("/");
 
-
+                } ) ;
 
             })
-
+                .on('error',(e)=>{
+                    console.error(e);
+                });
 
                     /*res=>{
                     if (res.status === 200)

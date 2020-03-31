@@ -28,27 +28,27 @@ pool.query('SELECT * FROM player', (err, res) => {
 const sequelize = new Sequelize(process.env.DATABASE_URL,{
     dialect:"postges"
 });
-const User = sequelize.define('user', {
+const User = sequelize.define('play', {
     //nom: Sequelize.STRING,
     //prenom: Sequelize.STRING,
     email: Sequelize.STRING,
-    mdp: Sequelize.STRING,
+    password: Sequelize.STRING,
     //win:Sequelize.INTEGER,
     //lose:Sequelize.INTEGER
 });
 User.sync().then(()=>{
     return User.create( {
         email:"bilala@gmail.com",
-        mdp:"hololooo"
+        password:"hololooo"
     })
 });
 sequelize.authenticate()
     .then(()=> console.log('database connected'))
     .catch(err =>console.log('error'+err))
-const  hashPassword = async (mdp)=>{
+const  hashPassword = async (password)=>{
     let passHash;
     try {
-        passHash = await bCrypt.hashSync(mdp, 10)
+        passHash = await bCrypt.hashSync(password, 10)
     }
     catch (e) {
         return null;
@@ -59,10 +59,10 @@ const addUser = async (user)=>{
     let newUser = await User.findOne({ where: {email:user.email} }).catch(()=> {return null});
     if (newUser)
         return false;
-    const genPass = await hashPassword(user.mdp);
+    const genPass = await hashPassword(user.password);
     if (genPass === null)
         return null;
-    user.mdp=genPass;
+    user.password=genPass;
     return User.create(user).catch(()=>{return null});
 };
 const checkUser = async (email, password) =>{
@@ -70,6 +70,6 @@ const checkUser = async (email, password) =>{
     let user = await User.findOne({ where: {email:email} }).catch(()=> {return null});
     if (user===null)
         return false;
-    return  bCrypt.compareSync(password, user.mdp) === true ? user : false;
+    return  bCrypt.compareSync(password, user.password) === true ? user : false;
 };
 module.exports = {User,hashPassword,checkUser,addUser};

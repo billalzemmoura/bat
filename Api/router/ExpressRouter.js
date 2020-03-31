@@ -18,12 +18,12 @@ app.get('/api', function (req, res) {
     res.send('Api b-n!')
 });
 app.get('/api/login', async function (req, res) {
-    if (req.query.email && req.query.mdp){
-        const user = await checkUser(req.query.email,req.query.mdp);
+    if (req.query.email && req.query.password){
+        const user = await checkUser(req.query.email,req.query.password);
         if (user === null)
             return res.status(400).send();
         if (user)
-            return res.status(200).send({mdp:user.mdp,email:user.email});
+            return res.status(200).send({password:user.password,email:user.email});
         return res.status(409).send();
 
     }else
